@@ -20,7 +20,6 @@ export async function GET(req) {
     await connectDB();
 
     let adminUser = await Admin.findOne({ email });
-    console.log(adminUser);
     if (adminUser) {
       const isMatch = await bcrypt.compare(password, adminUser.password);
       if (!isMatch) {
